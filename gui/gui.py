@@ -135,7 +135,7 @@ class Menu(Toplevel):
 
         self.canvas.create_text(
             448.0,
-            125.0,
+            110.0,
             anchor="nw",
             text="Right Click: End Zone",
             fill="#000000",
@@ -144,7 +144,7 @@ class Menu(Toplevel):
 
         self.canvas.create_text(
             20.0,
-            125.0,
+            110.0,
             anchor="nw",
             text="Left Click: Starting Zone",
             fill="#000000",
@@ -153,7 +153,7 @@ class Menu(Toplevel):
 
         self.canvas.create_text(
             171.0,
-            125.0,
+            110.0,
             anchor="nw",
             text="Left Click (After placing start): Draw Obstacles",
             fill="#000000",
@@ -162,7 +162,7 @@ class Menu(Toplevel):
 
         self.canvas.create_text(
             132.0,
-            161.0,
+            150.0,
             anchor="nw",
             text="Backspace = Remove obstacles\nSpace = Remove endbox",
             fill="#000000",
@@ -171,7 +171,7 @@ class Menu(Toplevel):
 
         self.canvas.create_text(
             326.0,
-            161.0,
+            150.0,
             anchor="nw",
             text="R = Remove everything\nClose = Back to Main Menu",
             fill="#000000",
@@ -180,9 +180,18 @@ class Menu(Toplevel):
 
         self.canvas.create_text(
             239.0,
-            110.0,
+            185.0,
             anchor="nw",
-            text="Enter: Start searching",
+            text="ENTER = Start Searching",
+            fill="#000000",
+            font=("Encode Sans SC", 11 * -1)
+        )
+
+        self.canvas.create_text(
+            239.0,
+            125.0,
+            anchor="nw",
+            text="V = Random Walls",
             fill="#000000",
             font=("Encode Sans SC", 11 * -1)
         )

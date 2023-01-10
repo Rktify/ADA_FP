@@ -4,6 +4,7 @@ import sys
 import tracemalloc
 import time
 from .. import Redirect
+from random import randint
 
 def main():
     width, height = 600, 600
@@ -30,6 +31,7 @@ def main():
             self.visited = False
             self.neighbours = []
             self.path = None
+
 
         def draw(self, win, color):
             pygame.draw.rect(win, color, (self.x * pixelwidth, self.y * pixelheight, pixelwidth - 2, pixelheight - 2))
@@ -119,6 +121,15 @@ def main():
                                 search = False
                                 queue.clear()
                                 pathing.clear()
+
+                    if event.key == pygame.K_v:
+                        for i in range(columns):
+                            for j in range(rows):
+                                box = grid[i][j]
+                                if randint(0, 100) < 40:
+                                    if box != start_box and box != endzone:
+                                        box.obstacle = True
+                                        box.obstaclestatus = True
 
                 if event.type == pygame.KEYDOWN and endboxstatus:
                     if event.key == pygame.K_RETURN:
