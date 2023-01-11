@@ -46,6 +46,7 @@ def main():
                 self.neighbours.append(grid[self.x][self.y - 1])
             if self.y < rows - 1:
                 self.neighbours.append(grid[self.x][self.y + 1])
+            
             if self.x < columns - 1 and self.y < rows - 1:
                 self.neighbours.append(grid[self.x+1][self.y+1])
             if self.x < columns - 1 and self.y > 0:
