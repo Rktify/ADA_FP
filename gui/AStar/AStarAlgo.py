@@ -136,7 +136,7 @@ def main():
                                 pathing.clear()
                                 closedqueue.clear()
 
-                    if event.key == pygame.K_v:
+                    if event.key == pygame.K_v and endboxstatus and startboxstatus:
                         for i in range(columns):
                             for j in range(rows):
                                 box = grid[i][j]
