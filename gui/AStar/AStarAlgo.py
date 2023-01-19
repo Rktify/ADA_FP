@@ -4,7 +4,7 @@ import sys
 import tracemalloc
 import time
 import math
-from random import randint
+from random import randint, choice
 from .. import Redirect
 
 def main():
@@ -94,9 +94,11 @@ def main():
                         startboxstatus = True
                         grid[i][j].visited = True
                         queue.append(grid[i][j])
-                    if event.buttons[0] and endboxstatus and startboxstatus and not finish:
+                    if event.buttons[0] and endboxstatus and startboxstatus and not finish and not search:
                         grid[i][j].obstacle = True
                         grid[i][j].obstaclestatus = True
+                    if event.buttons[0]:
+                        print(i, j)
                     if event.buttons[2] and not endboxstatus and not grid[i][j].obstaclestatus:
                         endzone = grid[i][j]
                         endzone.end = True
@@ -127,6 +129,7 @@ def main():
                                 box.visited = False
                                 box.start = False
                                 box.path = None
+                                box.f, box.g, box.h = 0, 0, 0
                                 endboxstatus = False
                                 startboxstatus = False
                                 finish = False
@@ -144,6 +147,23 @@ def main():
                                     if box != start_box and box != endzone:
                                         box.obstacle = True
                                         box.obstaclestatus = True
+
+                    if event.key == pygame.K_x and not startboxstatus and not endboxstatus:
+                        boxes = []
+                        for i in range(columns):
+                            for j in range(rows):
+                                box = grid[i][j]
+                                boxes.append(box)        
+                        if not startboxstatus:
+                            start_box = choice(boxes)
+                            start_box.start = True
+                            startboxstatus = True
+                            start_box.visited = True
+                            queue.append(start_box)
+                        if not endboxstatus:
+                            endzone = choice(boxes)
+                            endzone.end = True
+                            endboxstatus = True
 
                 if event.type == pygame.KEYDOWN and endboxstatus:
                     if event.key == pygame.K_RETURN:
